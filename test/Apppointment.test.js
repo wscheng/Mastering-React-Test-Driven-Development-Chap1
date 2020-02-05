@@ -11,4 +11,12 @@ describe("Appointment", () => {
     ReactDOM.render(component, container);
     expect(document.body.textContent).toMatch("Ashley");
   });
+  it.skip("renders another customer first name", () => {
+    const customer = { firstName: "Jordan" };
+    const component = <Appointment customer={customer} />;
+    const container = document.createElement("div");
+    document.body.appendChild(container);
+    ReactDOM.render(component, container);
+    expect(document.body.textContent).toMatch("Jordan");
+  });
 });
