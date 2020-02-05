@@ -3,4 +3,8 @@ export const Appointment = ({ customer: { firstName } }) => (
   <div>{firstName}</div>
 );
 
-export const AppointmentsDayView = () => <div id="appointmentsDayView"></div>;
+export const AppointmentsDayView = () => (
+  <div id="appointmentsDayView">
+    <ol />
+  </div>
+);
