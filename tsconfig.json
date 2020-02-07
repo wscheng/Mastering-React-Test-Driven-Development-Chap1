@@ -1,0 +1,32 @@
+{
+  // You can checkout tsconfig spec here:
+  // https://www.typescriptlang.org/v2/en/tsconfig#noImplicitAny
+  "compilerOptions": {
+    "outDir": "./dist/", // path to output directory
+    // 有sourceMap檔案能讓輸出(emit)的javascript code對應到原始的typescript code
+    "sourceMap": true, // allow sourcemap support
+    "strictNullChecks": true, // enable strict null checks as a best practice
+    // https://www.typescriptlang.org/v2/en/tsconfig#module
+    // 要解析(resolve)的js版本
+    "module": "es6", // specify module code generation
+    "jsx": "react", // use typescript to transpile jsx to js
+    // 要輸出的js版本，但是要哪種比較好?
+    // Fam建議使用ES2015，因為有async、await可用
+    // ps.ES5不是ES2015，兩個是不一樣的！
+    "target": "es5", // specify ECMAScript target version
+    // https://www.typescriptlang.org/v2/en/tsconfig#allowJs
+    // 接受js的檔案import
+    "allowJs": true // allow a partial TypeScript and JavaScript codebase
+    // TODO open noImplicitAny option
+    //"noImplicitAny": true
+  },
+  // https://www.typescriptlang.org/v2/en/tsconfig#include
+  // include and exclude support wildcard characters to make glob patterns:
+  // 1. * matches zero or more characters (excluding directory separators)
+  // 2. ? matches any one character (excluding directory separators)
+  // 3. **/ matches any directory nested to any level
+  // If a glob pattern doesn’t include a file extension, then only files with
+  // supported extensions are included (e.g. .ts, .tsx, and .d.ts by default, with .js and .jsx if allowJs is set to true).
+  // https://www.npmjs.com/package/glob
+  "include": ["./src/**/*", "./test/**/*"]
+}

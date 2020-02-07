@@ -1,25 +1,27 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import ReactTestUtils from "react-dom/test-utils";
+import * as React from "react";
+import * as ReactDOM from "react-dom";
+import * as ReactTestUtils from "react-dom/test-utils";
 import { Appointment, AppointmentsDayView } from "../src/Appointment";
 
+// TODO need to refactor
 describe("Appointment", () => {
   let container;
-  let customer;
+  const today = new Date();
+  const appointments = [
+    { startsAt: today.setHours(12, 0), customer: { firstName: "Ashley" } },
+    { startsAt: today.setHours(13, 0), customer: { firstName: "Jordan" } }
+  ];
   const render = component => ReactDOM.render(component, container);
 
   beforeEach(() => {
     container = document.createElement("div");
   });
   it("renders the customer first name", () => {
-    customer = { firstName: "Ashley" };
-    render(<Appointment customer={customer} />);
+    render(<Appointment appointment={appointments[0]} />);
     expect(container.textContent).toMatch("Ashley");
   });
   it("renders another customer first name", () => {
-    customer = { firstName: "Jordan" };
-    const component = <Appointment customer={customer} />;
-    render(<Appointment customer={customer} />);
+    render(<Appointment appointment={appointments[1]} />);
     expect(container.textContent).toMatch("Jordan");
   });
 });

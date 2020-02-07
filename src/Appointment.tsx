@@ -15,7 +15,7 @@ export const Appointment: React.FC<{ appointment: I_props_Appointment }> = ({
 }) => {
   return (
     <div>
-      <div>{appointment.startsAt}</div>
+      <div>{appointmentTimeOfDay(appointment.startsAt)}</div>
       <div>{appointment.customer.firstName}</div>
     </div>
   );
