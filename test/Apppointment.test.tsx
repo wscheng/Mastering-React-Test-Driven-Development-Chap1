@@ -55,6 +55,8 @@ describe("AppointmentsDayView", () => {
     render(<AppointmentsDayView appointments={[]} />);
     expect(container.textContent).toMatch(
       "There are no appointments scheduled for today."
+      // TODO make the matcher more specific
+      // "There are no appointments scheduled for today. I'm a temporary test string for testing default export."
     );
   });
   it("selects the first appointment by default", () => {

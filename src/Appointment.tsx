@@ -1,25 +1,26 @@
 import * as React from "react";
 import { useState } from "react";
+import tmpX from "./tmp";
 
 interface I_props_Customer {
   firstName: string;
 }
 
-interface I_props_Appointment {
+interface Appointment {
   startsAt: number;
   customer: I_props_Customer;
 }
 
-export const Appointment: React.FC<{ appointment: I_props_Appointment }> = ({
-  appointment
-}) => {
-  return (
-    <div>
-      <div>{appointmentTimeOfDay(appointment.startsAt)}</div>
-      <div>{appointment.customer.firstName}</div>
-    </div>
-  );
-};
+interface I_props_Appointment {
+  appointment: Appointment;
+}
+
+export const Appointment = ({ appointment }: I_props_Appointment) => (
+  <div>
+    <div>{appointmentTimeOfDay(appointment.startsAt)}</div>
+    <div>{appointment.customer.firstName}</div>
+  </div>
+);
 
 const appointmentTimeOfDay = (startsAt: number) => {
   const [h, m] = new Date(startsAt).toTimeString().split(":");
@@ -27,7 +28,7 @@ const appointmentTimeOfDay = (startsAt: number) => {
 };
 
 export const AppointmentsDayView: React.FC<{
-  appointments: I_props_Appointment[];
+  appointments: Appointment[];
 }> = ({ appointments }) => {
   const [selectedAppointment, setSelectedAppointment] = useState(0);
   return (
@@ -42,7 +43,7 @@ export const AppointmentsDayView: React.FC<{
         ))}
       </ol>
       {appointments.length === 0 ? (
-        <p>There are no appointments scheduled for today.</p>
+        <p>There are no appointments scheduled for today. {tmpX}</p>
       ) : (
         <Appointment appointment={appointments[selectedAppointment]} />
       )}
